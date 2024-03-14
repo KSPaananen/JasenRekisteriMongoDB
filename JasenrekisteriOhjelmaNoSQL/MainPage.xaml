@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JasenrekisteriOhjelmaNoSQL.MainPage">
+
+    <StackLayout>
+
+        <Grid Padding="20" HorizontalOptions="Start" ColumnSpacing="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="600"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="425"/>
+                <ColumnDefinition Width="550"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Jäsenlista" FontSize="18" Padding="10,0,10,10"></Label>
+            <ListView x:Name="memberList" Grid.Row="0" Grid.Column="0" ItemSelected="memberList_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="150"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="300"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <VerticalStackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Start" Padding="10,20,0,10">
+                                        <Label Text="{Binding FirstName}" FontSize="15"></Label>
+                                        <Label Text="{Binding LastName}" FontSize="15"></Label>
+                                        <Label Text="{Binding Address}" FontSize="15"></Label>
+                                        <Label Text="{Binding PostalCode}" FontSize="15"></Label>
+                                    </VerticalStackLayout>
+                                    <VerticalStackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Start" Padding="0,20,0,10">
+                                        <Label Text="{Binding Phone}" FontSize="15"></Label>
+                                        <Label Text="{Binding Email}" FontSize="15"></Label>
+                                        <Label Text="{Binding MembershipStartDt}"></Label>
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <HorizontalStackLayout HorizontalOptions="Start" VerticalOptions="End">
+                <Button x:Name="deleteButton" Text="Poista valittu jäsen" Clicked="deleteButton_Clicked" Padding="10"></Button>
+            </HorizontalStackLayout>
+
+            <Grid Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Start">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="300"></RowDefinition>
+                    <RowDefinition Height="300"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="550"/>
+                </Grid.ColumnDefinitions>
+
+                <HorizontalStackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Start">
+                    <StackLayout HorizontalOptions="Start" VerticalOptions="Start">
+                        <Label Text="Lisää uusi jäsen" FontSize="18"></Label>
+                        <Label Text="Nimi"></Label>
+                        <Entry x:Name="aFirstName"></Entry>
+                        <Label Text="Sukunimi"></Label>
+                        <Entry x:Name="aLastName"></Entry>
+                        <Label Text="Osoite"></Label>
+                        <Entry x:Name="aAddress"></Entry>
+                        <Label Text="Postinumero"></Label>
+                        <Entry x:Name="aPostalCode"></Entry>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="End" VerticalOptions="Start" Padding="10,25,0,0">
+                        <Label Text="Puhelin numero"></Label>
+                        <Entry x:Name="aPhoneNumber"></Entry>
+                        <Label Text="Sähköposti"></Label>
+                        <Entry x:Name="aEmail"></Entry>
+                        <Label Text="Jäsenyyden alkupäivä"></Label>
+                        <Entry x:Name="aMembershipStartDt"></Entry>
+                        <Button x:Name="addButton" Text="Lisää jäsen" Clicked="addButton_Clicked" Margin="0,20,0,0"></Button>
+                    </StackLayout>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Grid.Row="1" Grid.Column="0">
+                    <StackLayout HorizontalOptions="Start" VerticalOptions="Start">
+                        <Label Text="Muokkaa jäsentä" FontSize="18"></Label>
+                        <Label Text="Nimi"></Label>
+                        <Entry x:Name="eFirstName"></Entry>
+                        <Label Text="Sukunimi"></Label>
+                        <Entry x:Name="eLastName"></Entry>
+                        <Label Text="Osoite"></Label>
+                        <Entry x:Name="eAddress"></Entry>
+                        <Label Text="Postinumero"></Label>
+                        <Entry x:Name="ePostalCode"></Entry>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="End" VerticalOptions="Start" Padding="10,25,0,0">
+                        <Label Text="Puhelin numero"></Label>
+                        <Entry x:Name="ePhoneNumber"></Entry>
+                        <Label Text="Sähköposti"></Label>
+                        <Entry x:Name="eEmail"></Entry>
+                        <Label Text="Jäsenyyden alkupäivä"></Label>
+                        <Entry x:Name="eMembershipStartDt"></Entry>
+                        <Button x:Name="saveButton" Text="Tallena" Clicked="saveButton_Clicked" Margin="0,20,0,0"></Button>
+                    </StackLayout>
+                </HorizontalStackLayout>
+
+            </Grid>
+        </Grid>
+        
+    </StackLayout>
+
+</ContentPage>
